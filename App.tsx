@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Lenis from 'lenis';
 import Hero from './components/Hero';
 import Gallery from './components/Gallery';
+import InvitationCard from './components/InvitationCard';
 import Footer from './components/Footer';
 import { NAV_LINKS } from './constants';
 import { Menu, X } from 'lucide-react';
@@ -93,6 +94,7 @@ const App: React.FC = () => {
 
       <main>
         <Hero />
+        <InvitationCard />
         <Gallery />
       </main>
 
