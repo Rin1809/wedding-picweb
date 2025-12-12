@@ -7,7 +7,7 @@ interface HeroProps {
 
 const Hero: React.FC<HeroProps> = ({ onStart }) => {
   return (
-    <section id="home" className="relative h-screen w-full overflow-hidden">
+    <section id="home" className="relative h-[100dvh] w-full overflow-hidden">
       {/* Background Image with Overlay */}
       <div className="absolute inset-0">
         <motion.div
@@ -41,7 +41,7 @@ const Hero: React.FC<HeroProps> = ({ onStart }) => {
           initial={{ y: 30, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.8, duration: 0.8 }}
-          className="text-white font-script text-7xl md:text-9xl mb-2 drop-shadow-lg"
+          className="text-white font-script text-5xl sm:text-7xl md:text-9xl mb-2 drop-shadow-lg"
         >
           Văn Hiển & Huỳnh Thư
         </motion.h1>

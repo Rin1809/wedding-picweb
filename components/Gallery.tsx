@@ -44,7 +44,7 @@ const Gallery: React.FC = () => {
   }, [selectedPhoto, handlePrev, handleNext]);
 
   return (
-    <section id="gallery" className="py-20 px-4 md:px-8 bg-wedding-soft shadow-[inset_0_0_150px_rgba(0,0,0,0.08)] relative">
+    <section id="gallery" className="py-12 md:py-20 px-4 md:px-8 bg-wedding-soft shadow-[inset_0_0_150px_rgba(0,0,0,0.08)] relative">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-wedding-text font-serif text-4xl md:text-5xl mb-4">
@@ -136,23 +136,23 @@ const Gallery: React.FC = () => {
         >
           {/* Previous Button */}
           <button
-            className="absolute left-4 top-1/2 -translate-y-1/2 p-2 text-white/50 hover:text-white hover:bg-white/10 rounded-full transition-all duration-300 transform hover:scale-110 z-50 focus:outline-none"
+            className="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 p-2 text-white/50 hover:text-white hover:bg-white/10 rounded-full transition-all duration-300 transform hover:scale-110 z-50 focus:outline-none"
             onClick={handlePrev}
             aria-label="Previous image"
           >
-            <ChevronLeft size={48} strokeWidth={1.5} />
+            <ChevronLeft className="w-8 h-8 md:w-12 md:h-12" strokeWidth={1.5} />
           </button>
 
           {/* Next Button */}
           <button
-            className="absolute right-4 top-1/2 -translate-y-1/2 p-2 text-white/50 hover:text-white hover:bg-white/10 rounded-full transition-all duration-300 transform hover:scale-110 z-50 focus:outline-none"
+            className="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 p-2 text-white/50 hover:text-white hover:bg-white/10 rounded-full transition-all duration-300 transform hover:scale-110 z-50 focus:outline-none"
             onClick={handleNext}
             aria-label="Next image"
           >
-            <ChevronRight size={48} strokeWidth={1.5} />
+            <ChevronRight className="w-8 h-8 md:w-12 md:h-12" strokeWidth={1.5} />
           </button>
           <button
-            className="absolute top-6 right-6 text-white/70 hover:text-white transition-colors"
+            className="absolute top-4 right-4 text-white/70 hover:text-white transition-colors"
             onClick={() => setSelectedPhoto(null)}
           >
             <X size={32} />

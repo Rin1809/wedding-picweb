@@ -81,7 +81,7 @@ const InvitationCard: React.FC = () => {
     };
 
     return (
-        <section id="invitation" className="py-32 px-4 flex justify-center items-center bg-wedding-soft relative overflow-hidden min-h-[80vh]">
+        <section id="invitation" className="py-16 md:py-32 px-4 flex justify-center items-center bg-wedding-soft relative overflow-hidden min-h-[80vh]">
             {/* Hidden Audio Element */}
             <audio
                 ref={audioRef}
