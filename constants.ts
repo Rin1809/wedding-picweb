@@ -42,11 +42,11 @@ export const MUSIC_PLAYLIST = [
   {
     title: "Cùng Anh Già Đi",
     artist: "Đường Cổ",
-    src: "/music/Cùng anh già đi - Đường Cổ 唐古-陪你一起變老.mp3"
+    src: "/music/cung-anh-gia-di.mp3"
   },
   {
     title: "Kiếp Sau Vẫn Muốn Cùng Em Lập Gia Đình",
     artist: "Đồng Đại Vương",
-    src: "/music/Kiếp Sau Vẫn Muốn Cùng Em Lập Gia Đình - 下辈子还要和你成个家  Đồng Đại Vương - 彤大王.mp3"
+    src: "/music/kiep-sau-van-muon.mp3"
   }
 ];

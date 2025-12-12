@@ -17,7 +17,7 @@ const Hero: React.FC<HeroProps> = ({ onStart }) => {
           className="w-full h-full"
         >
           <img
-            src="/anh/nen.jpg"
+            src="/anh_originals/TBM_1229.JPG"
             alt="Couple Cover"
             className="w-full h-full object-cover grayscale-[30%]"
           />
