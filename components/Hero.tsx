@@ -67,7 +67,7 @@ const Hero: React.FC<HeroProps> = ({ onStart }) => {
           transition={{ delay: 1.4, duration: 0.8 }}
           className="text-white font-serif text-lg md:text-xl tracking-widest"
         >
-          JANUARY 29, 2025 - DECEMBER 28, 2025
+          DECEMBER 28, 2025 - JANUARY 29, 2026
         </motion.p>
 
         <motion.a

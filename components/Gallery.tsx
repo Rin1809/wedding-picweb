@@ -44,14 +44,23 @@ const Gallery: React.FC = () => {
   }, [selectedPhoto, handlePrev, handleNext]);
 
   return (
-    <section id="gallery" className="py-12 md:py-20 px-4 md:px-8 bg-wedding-soft shadow-[inset_0_0_150px_rgba(0,0,0,0.08)] relative">
-      <div className="max-w-7xl mx-auto">
+    <section id="gallery" className="py-12 md:py-20 px-4 md:px-8 relative overflow-hidden">
+      {/* Parallax Background */}
+      <div
+        className="absolute inset-0 z-0 bg-fixed bg-center bg-cover bg-no-repeat"
+        style={{ backgroundImage: "url('/anh/TBM_1196.JPG')" }}
+      />
+
+      {/* Overlay for Fade Effect */}
+      <div className="absolute inset-0 z-0 bg-black/50" />
+
+      <div className="max-w-7xl mx-auto relative z-10">
         <div className="text-center mb-16">
-          <h2 className="text-wedding-text font-serif text-4xl md:text-5xl mb-4">
+          <h2 className="text-white font-serif text-4xl md:text-5xl mb-4 drop-shadow-md">
             Khoảnh Khắc Đáng Nhớ
           </h2>
-          <p className="text-wedding-accent font-sans italic">
-            "23-04-2017   //  8 năm 1 chặng đường"
+          <p className="text-white/90 font-sans italic">
+            "23-04-2017 - Hiện tại"
           </p>
 
           <div className="flex flex-wrap justify-center gap-4 mt-8">
@@ -62,7 +71,7 @@ const Gallery: React.FC = () => {
                 className={`px-6 py-2 rounded-full border transition-all duration-300 font-serif text-sm uppercase tracking-wide
                   ${filter === cat
                     ? 'bg-wedding-gold text-white border-wedding-gold'
-                    : 'bg-transparent text-wedding-accent border-wedding-accent/30 hover:border-wedding-gold hover:text-wedding-gold'
+                    : 'bg-transparent text-white border-white/30 hover:border-wedding-gold hover:text-wedding-gold'
                   }`}
               >
                 {cat === 'all' ? 'Tất cả' : cat}
