@@ -49,9 +49,8 @@ const Gallery: React.FC = () => {
             {filteredPhotos.map((photo) => (
               <motion.div
                 layout
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
                 exit={{ opacity: 0, scale: 0.9 }}
                 transition={{ duration: 0.5 }}
                 key={photo.id}
