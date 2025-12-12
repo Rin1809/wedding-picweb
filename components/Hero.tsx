@@ -1,7 +1,11 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-const Hero: React.FC = () => {
+interface HeroProps {
+  onStart: () => void;
+}
+
+const Hero: React.FC<HeroProps> = ({ onStart }) => {
   return (
     <section id="home" className="relative h-screen w-full overflow-hidden">
       {/* Background Image with Overlay */}
@@ -13,7 +17,7 @@ const Hero: React.FC = () => {
           className="w-full h-full"
         >
           <img
-            src="https://picsum.photos/seed/wedding_hero/1920/1080"
+            src="/anh/nen.jpg"
             alt="Couple Cover"
             className="w-full h-full object-cover grayscale-[30%]"
           />
@@ -62,8 +66,12 @@ const Hero: React.FC = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.8, duration: 1 }}
-          href="#gallery"
-          className="mt-12 px-8 py-3 border border-wedding-champagne text-wedding-champagne hover:bg-wedding-champagne hover:text-black transition-all duration-500 font-serif tracking-widest text-sm uppercase"
+          href="#invitation"
+          onClick={(e) => {
+            e.preventDefault();
+            onStart();
+          }}
+          className="mt-12 px-8 py-3 border border-wedding-champagne text-wedding-champagne hover:bg-wedding-champagne hover:text-black transition-all duration-500 font-serif tracking-widest text-sm uppercase cursor-pointer"
         >
           Xem Album Ảnh
         </motion.a>

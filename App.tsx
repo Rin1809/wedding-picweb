@@ -10,6 +10,14 @@ import { Menu, X } from 'lucide-react';
 const App: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const lenisRef = React.useRef<Lenis | null>(null);
+
+  const handleStart = () => {
+    if (lenisRef.current) {
+      lenisRef.current.start();
+      lenisRef.current.scrollTo('#invitation', { offset: -50, duration: 2 });
+    }
+  };
 
   useEffect(() => {
     // Lenis Smooth Scroll
@@ -22,6 +30,9 @@ const App: React.FC = () => {
       wheelMultiplier: 1,
       touchMultiplier: 2,
     });
+
+    lenisRef.current = lenis;
+    lenis.stop(); // Lock scroll initially
 
     function raf(time: number) {
       lenis.raf(time);
@@ -93,7 +104,7 @@ const App: React.FC = () => {
       </nav>
 
       <main>
-        <Hero />
+        <Hero onStart={handleStart} />
         <InvitationCard />
         <Gallery />
       </main>

@@ -40,58 +40,61 @@ const Gallery: React.FC = () => {
           </div>
         </div>
 
-        {/* Masonry Layout using CSS Columns */}
-        <motion.div
-          layout
-          className="columns-1 md:columns-2 lg:columns-3 gap-8 space-y-8 px-4"
-        >
-          <AnimatePresence>
-            {filteredPhotos.map((photo, index) => {
-              // Calculate deterministic rotation based on index to avoid hydration mismatch
-              // flucuates between -6deg and 6deg
-              const rotation = (index % 2 === 0 ? 1 : -1) * ((index * 7) % 6);
+        {/* Manual Masonry Layout */}
+        <div className="flex flex-col md:flex-row gap-8 px-4">
+          {[0, 1, 2].map((colIndex) => (
+            <div key={colIndex} className="flex-1 space-y-8">
+              <AnimatePresence>
+                {filteredPhotos
+                  .filter((_, index) => index % 3 === colIndex)
+                  .map((photo, index) => {
+                    // Calculate deterministic rotation
+                    // Use actual index from filteredPhotos for consistent rotation, not the column index
+                    const actualIndex = filteredPhotos.indexOf(photo);
+                    const rotation = (actualIndex % 2 === 0 ? 1 : -1) * ((actualIndex * 7) % 6);
 
-              return (
-                <motion.div
-                  layout
-                  initial={{ opacity: 0, rotate: rotation, scale: 0.9 }}
-                  animate={{ opacity: 1, rotate: rotation, scale: 1 }}
-                  whileHover={{
-                    scale: 1.05,
-                    rotate: 0,
-                    zIndex: 10,
-                    transition: { duration: 0.3 }
-                  }}
-                  exit={{ opacity: 0, scale: 0.9 }}
-                  transition={{ duration: 0.5 }}
-                  key={photo.id}
-                  className="break-inside-avoid relative group cursor-pointer bg-white p-4 pb-12 shadow-lg hover:shadow-2xl transition-shadow duration-300"
-                  style={{ transformOrigin: 'center' }}
-                  onClick={() => setSelectedPhoto(photo)}
-                >
-                  <div className="overflow-hidden w-full h-full relative">
-                    <img
-                      src={photo.url}
-                      alt={photo.caption}
-                      loading="lazy"
-                      className="w-full h-auto object-cover grayscale-[20%] group-hover:grayscale-0 transition-all duration-500"
-                    />
-                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
-                      <ZoomIn className="text-white w-8 h-8 drop-shadow-md" />
-                    </div>
-                  </div>
+                    return (
+                      <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true, margin: "50px" }}
+                        whileHover={{
+                          scale: 1.02,
+                          rotate: 0,
+                          zIndex: 10,
+                          transition: { duration: 0.3 }
+                        }}
+                        transition={{ duration: 0.5, delay: index * 0.1 }}
+                        key={photo.id}
+                        className="relative group cursor-pointer bg-white p-4 pb-12 shadow-lg hover:shadow-2xl transition-shadow duration-300"
+                        style={{ rotate: `${rotation}deg` }}
+                        onClick={() => setSelectedPhoto(photo)}
+                      >
+                        <div className="overflow-hidden w-full h-full relative">
+                          <img
+                            src={photo.url}
+                            alt={photo.caption}
+                            loading="lazy"
+                            className="w-full h-auto object-cover grayscale-[20%] group-hover:grayscale-0 transition-all duration-500"
+                          />
+                          <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
+                            <ZoomIn className="text-white w-8 h-8 drop-shadow-md" />
+                          </div>
+                        </div>
 
-                  {/* Handwritten Caption Effect */}
-                  <div className="absolute bottom-4 left-0 right-0 text-center">
-                    <p className="font-handwriting text-gray-600 text-lg opacity-80 rotate-[-1deg]">
-                      {photo.caption}
-                    </p>
-                  </div>
-                </motion.div>
-              );
-            })}
-          </AnimatePresence>
-        </motion.div>
+                        {/* Handwritten Caption Effect */}
+                        <div className="absolute bottom-4 left-0 right-0 text-center">
+                          <p className="font-handwriting text-gray-600 text-lg opacity-80 rotate-[-1deg]">
+                            {photo.caption}
+                          </p>
+                        </div>
+                      </motion.div>
+                    );
+                  })}
+              </AnimatePresence>
+            </div>
+          ))}
+        </div>
       </div>
 
       {/* Lightbox Modal */}
