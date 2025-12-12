@@ -39,7 +39,7 @@ const Hero: React.FC = () => {
           transition={{ delay: 0.8, duration: 0.8 }}
           className="text-white font-script text-7xl md:text-9xl mb-2 drop-shadow-lg"
         >
-          Hiển & Huyền
+          Văn Hiển & Huỳnh Thư
         </motion.h1>
 
         <motion.div

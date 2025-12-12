@@ -13,7 +13,7 @@ const Gallery: React.FC = () => {
     : WEDDING_PHOTOS.filter(p => p.category === filter);
 
   return (
-    <section id="gallery" className="py-20 px-4 md:px-8 bg-wedding-soft">
+    <section id="gallery" className="py-20 px-4 md:px-8 bg-wedding-soft shadow-[inset_0_0_150px_rgba(0,0,0,0.08)] relative">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-wedding-text font-serif text-4xl md:text-5xl mb-4">
@@ -43,31 +43,53 @@ const Gallery: React.FC = () => {
         {/* Masonry Layout using CSS Columns */}
         <motion.div
           layout
-          className="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6"
+          className="columns-1 md:columns-2 lg:columns-3 gap-8 space-y-8 px-4"
         >
           <AnimatePresence>
-            {filteredPhotos.map((photo) => (
-              <motion.div
-                layout
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0, scale: 0.9 }}
-                transition={{ duration: 0.5 }}
-                key={photo.id}
-                className="break-inside-avoid relative group cursor-pointer overflow-hidden rounded-lg shadow-sm hover:shadow-xl transition-all duration-500"
-                onClick={() => setSelectedPhoto(photo)}
-              >
-                <img
-                  src={photo.url}
-                  alt={photo.caption}
-                  loading="lazy"
-                  className="w-full h-auto object-cover transform transition-transform duration-700 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
-                  <ZoomIn className="text-white w-8 h-8 opacity-80" />
-                </div>
-              </motion.div>
-            ))}
+            {filteredPhotos.map((photo, index) => {
+              // Calculate deterministic rotation based on index to avoid hydration mismatch
+              // flucuates between -6deg and 6deg
+              const rotation = (index % 2 === 0 ? 1 : -1) * ((index * 7) % 6);
+
+              return (
+                <motion.div
+                  layout
+                  initial={{ opacity: 0, rotate: rotation, scale: 0.9 }}
+                  animate={{ opacity: 1, rotate: rotation, scale: 1 }}
+                  whileHover={{
+                    scale: 1.05,
+                    rotate: 0,
+                    zIndex: 10,
+                    transition: { duration: 0.3 }
+                  }}
+                  exit={{ opacity: 0, scale: 0.9 }}
+                  transition={{ duration: 0.5 }}
+                  key={photo.id}
+                  className="break-inside-avoid relative group cursor-pointer bg-white p-4 pb-12 shadow-lg hover:shadow-2xl transition-shadow duration-300"
+                  style={{ transformOrigin: 'center' }}
+                  onClick={() => setSelectedPhoto(photo)}
+                >
+                  <div className="overflow-hidden w-full h-full relative">
+                    <img
+                      src={photo.url}
+                      alt={photo.caption}
+                      loading="lazy"
+                      className="w-full h-auto object-cover grayscale-[20%] group-hover:grayscale-0 transition-all duration-500"
+                    />
+                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
+                      <ZoomIn className="text-white w-8 h-8 drop-shadow-md" />
+                    </div>
+                  </div>
+
+                  {/* Handwritten Caption Effect */}
+                  <div className="absolute bottom-4 left-0 right-0 text-center">
+                    <p className="font-handwriting text-gray-600 text-lg opacity-80 rotate-[-1deg]">
+                      {photo.caption}
+                    </p>
+                  </div>
+                </motion.div>
+              );
+            })}
           </AnimatePresence>
         </motion.div>
       </div>

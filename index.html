@@ -1,48 +1,56 @@
 <!DOCTYPE html>
 <html lang="vi">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Thanh & Huyen - Our Wedding Gallery</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Pinyon+Script&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            colors: {
-              'wedding-champagne': '#F7E7CE',
-              'wedding-gold': '#C5A059',
-              'wedding-text': '#2C2C2C',
-              'wedding-soft': '#F9F9F9',
-              'wedding-accent': '#8A7968',
-            },
-            fontFamily: {
-              serif: ['Cinzel', 'serif'],
-              script: ['Pinyon Script', 'cursive'],
-              sans: ['Lato', 'sans-serif'],
-            },
-          }
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Thanh & Huyen - Our Wedding Gallery</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Pinyon+Script&family=Lato:wght@300;400;700&family=Caveat:wght@400;700&display=swap"
+    rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'wedding-champagne': '#F7E7CE',
+            'wedding-gold': '#C5A059',
+            'wedding-text': '#2C2C2C',
+            'wedding-soft': '#F9F9F9',
+            'wedding-accent': '#8A7968',
+          },
+          fontFamily: {
+            serif: ['Cinzel', 'serif'],
+            script: ['Pinyon Script', 'cursive'],
+            sans: ['Lato', 'sans-serif'],
+            handwriting: ['Caveat', 'cursive'],
+          },
         }
       }
-    </script>
-    <style>
-      body {
-        background-color: #F9F9F9;
-        color: #2C2C2C;
-      }
-      /* Hide scrollbar for Chrome, Safari and Opera */
-      .no-scrollbar::-webkit-scrollbar {
-          display: none;
-      }
-      /* Hide scrollbar for IE, Edge and Firefox */
-      .no-scrollbar {
-          -ms-overflow-style: none;  /* IE and Edge */
-          scrollbar-width: none;  /* Firefox */
-      }
-    </style>
+    }
+  </script>
+  <style>
+    body {
+      background-color: #F9F9F9;
+      color: #2C2C2C;
+    }
+
+    /* Hide scrollbar for Chrome, Safari and Opera */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+
+    /* Hide scrollbar for IE, Edge and Firefox */
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      /* IE and Edge */
+      scrollbar-width: none;
+      /* Firefox */
+    }
+  </style>
   <script type="importmap">
 {
   "imports": {
@@ -54,10 +62,12 @@
   }
 }
 </script>
-<link rel="stylesheet" href="/index.css">
+  <link rel="stylesheet" href="/index.css">
 </head>
-  <body>
-    <div id="root"></div>
+
+<body>
+  <div id="root"></div>
   <script type="module" src="/index.tsx"></script>
 </body>
+
 </html>
