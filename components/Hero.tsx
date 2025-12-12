@@ -16,12 +16,20 @@ const Hero: React.FC<HeroProps> = ({ onStart }) => {
           transition={{ duration: 1.5, ease: "easeOut" }}
           className="w-full h-full"
         >
+          {/* Mobile & iPad (< 1024px) */}
+          <img
+            src="/anh/TBM_1176.JPG"
+            alt="Couple Mobile Cover"
+            className="w-full h-full object-cover lg:hidden"
+          />
+          {/* Desktop (>= 1024px) */}
           <img
             src="/anh/TBM_1229.jpg"
-            alt="Couple Cover"
-            className="w-full h-full object-cover grayscale-[30%]"
+            alt="Couple Desktop Cover"
+            className="hidden lg:block w-full h-full object-cover grayscale-[30%]"
           />
         </motion.div>
+
         <div className="absolute inset-0 bg-black/30 mix-blend-multiply" />
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-wedding-soft" />
       </div>
@@ -59,7 +67,7 @@ const Hero: React.FC<HeroProps> = ({ onStart }) => {
           transition={{ delay: 1.4, duration: 0.8 }}
           className="text-white font-serif text-lg md:text-xl tracking-widest"
         >
-          DECEMBER 28, 2025 • SAIGON
+          JANUARY 29, 2025 - DECEMBER 28, 2025
         </motion.p>
 
         <motion.a
@@ -76,7 +84,7 @@ const Hero: React.FC<HeroProps> = ({ onStart }) => {
           Xem Album Ảnh
         </motion.a>
       </div>
-    </section>
+    </section >
   );
 };
 

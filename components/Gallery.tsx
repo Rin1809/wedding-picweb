@@ -51,7 +51,7 @@ const Gallery: React.FC = () => {
             Khoảnh Khắc Đáng Nhớ
           </h2>
           <p className="text-wedding-accent font-sans italic">
-            "Yêu là tìm thấy hạnh phúc của mình trong hạnh phúc của người khác."
+            "23-04-2017   //  8 năm 1 chặng đường"
           </p>
 
           <div className="flex flex-wrap justify-center gap-4 mt-8">

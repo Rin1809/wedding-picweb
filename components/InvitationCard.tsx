@@ -4,7 +4,7 @@ import { Heart, Play, Pause, SkipForward, SkipBack, Disc, Music, ChevronDown } f
 import { WEDDING_PHOTOS, MUSIC_PLAYLIST } from '../constants';
 
 const InvitationCard: React.FC = () => {
-    const featuredPhoto = WEDDING_PHOTOS.find(p => p.id === 'photo-32') || WEDDING_PHOTOS[0];
+    const featuredPhoto = WEDDING_PHOTOS.find(p => p.id === 'photo-9') || WEDDING_PHOTOS[0];
 
     // Music Player State
     const [isPlaying, setIsPlaying] = useState(false);
