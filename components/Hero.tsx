@@ -5,9 +5,9 @@ const Hero: React.FC = () => {
     <section id="home" className="relative h-screen w-full overflow-hidden">
       {/* Background Image with Overlay */}
       <div className="absolute inset-0">
-        <img 
-          src="https://picsum.photos/seed/wedding_hero/1920/1080" 
-          alt="Couple Cover" 
+        <img
+          src="https://picsum.photos/seed/wedding_hero/1920/1080"
+          alt="Couple Cover"
           className="w-full h-full object-cover grayscale-[30%]"
         />
         <div className="absolute inset-0 bg-black/30 mix-blend-multiply" />
@@ -20,14 +20,14 @@ const Hero: React.FC = () => {
           Save the Date
         </p>
         <h1 className="text-white font-script text-7xl md:text-9xl mb-2 drop-shadow-lg">
-          Thanh & Huyen
+          Hiển & Huyền
         </h1>
         <div className="w-24 h-[1px] bg-wedding-champagne my-6 opacity-80" />
         <p className="text-white font-serif text-lg md:text-xl tracking-widest">
-          DECEMBER 12, 2024 • SAIGON
+          DECEMBER 12, 2025 • SAIGON
         </p>
-        
-        <a 
+
+        <a
           href="#gallery"
           className="mt-12 px-8 py-3 border border-wedding-champagne text-wedding-champagne hover:bg-wedding-champagne hover:text-black transition-all duration-500 font-serif tracking-widest text-sm uppercase"
         >
