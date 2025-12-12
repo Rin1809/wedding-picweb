@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Photo } from '../types';
 import { WEDDING_PHOTOS } from '../constants';
-import { X, ZoomIn } from 'lucide-react';
+import { X, ZoomIn, ChevronLeft, ChevronRight } from 'lucide-react';
+import { useEffect, useCallback } from 'react';
 
 const Gallery: React.FC = () => {
   const [selectedPhoto, setSelectedPhoto] = useState<Photo | null>(null);
@@ -11,6 +12,36 @@ const Gallery: React.FC = () => {
   const filteredPhotos = filter === 'all'
     ? WEDDING_PHOTOS
     : WEDDING_PHOTOS.filter(p => p.category === filter);
+
+  // Navigation handlers
+  const handlePrev = useCallback((e?: React.MouseEvent) => {
+    e?.stopPropagation();
+    if (!selectedPhoto) return;
+    const currentIndex = filteredPhotos.findIndex(p => p.id === selectedPhoto.id);
+    const prevIndex = (currentIndex - 1 + filteredPhotos.length) % filteredPhotos.length;
+    setSelectedPhoto(filteredPhotos[prevIndex]);
+  }, [selectedPhoto, filteredPhotos]);
+
+  const handleNext = useCallback((e?: React.MouseEvent) => {
+    e?.stopPropagation();
+    if (!selectedPhoto) return;
+    const currentIndex = filteredPhotos.findIndex(p => p.id === selectedPhoto.id);
+    const nextIndex = (currentIndex + 1) % filteredPhotos.length;
+    setSelectedPhoto(filteredPhotos[nextIndex]);
+  }, [selectedPhoto, filteredPhotos]);
+
+  // Keyboard navigation
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (!selectedPhoto) return;
+      if (e.key === 'ArrowLeft') handlePrev();
+      if (e.key === 'ArrowRight') handleNext();
+      if (e.key === 'Escape') setSelectedPhoto(null);
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [selectedPhoto, handlePrev, handleNext]);
 
   return (
     <section id="gallery" className="py-20 px-4 md:px-8 bg-wedding-soft shadow-[inset_0_0_150px_rgba(0,0,0,0.08)] relative">
@@ -100,9 +131,26 @@ const Gallery: React.FC = () => {
       {/* Lightbox Modal */}
       {selectedPhoto && (
         <div
-          className="fixed inset-0 z-50 bg-black/95 backdrop-blur-sm flex items-center justify-center p-4 animate-fade-in"
+          className="fixed inset-0 z-50 bg-black/95 backdrop-blur-sm flex items-center justify-center p-4 animate-fade-in group"
           onClick={() => setSelectedPhoto(null)}
         >
+          {/* Previous Button */}
+          <button
+            className="absolute left-4 top-1/2 -translate-y-1/2 p-2 text-white/50 hover:text-white hover:bg-white/10 rounded-full transition-all duration-300 transform hover:scale-110 z-50 focus:outline-none"
+            onClick={handlePrev}
+            aria-label="Previous image"
+          >
+            <ChevronLeft size={48} strokeWidth={1.5} />
+          </button>
+
+          {/* Next Button */}
+          <button
+            className="absolute right-4 top-1/2 -translate-y-1/2 p-2 text-white/50 hover:text-white hover:bg-white/10 rounded-full transition-all duration-300 transform hover:scale-110 z-50 focus:outline-none"
+            onClick={handleNext}
+            aria-label="Next image"
+          >
+            <ChevronRight size={48} strokeWidth={1.5} />
+          </button>
           <button
             className="absolute top-6 right-6 text-white/70 hover:text-white transition-colors"
             onClick={() => setSelectedPhoto(null)}

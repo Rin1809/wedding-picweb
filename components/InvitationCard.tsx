@@ -14,6 +14,34 @@ const InvitationCard: React.FC = () => {
     const [isHovering, setIsHovering] = useState(false);
     const [hasAutoPlayed, setHasAutoPlayed] = useState(false);
 
+    // Live Clock State
+    const [currentTime, setCurrentTime] = useState(new Date());
+
+    useEffect(() => {
+        const timer = setInterval(() => {
+            setCurrentTime(new Date());
+        }, 1000);
+        return () => clearInterval(timer);
+    }, []);
+
+    // Format Date: "Thứ Hai, Ngày 12 Tháng 12 Năm 2025"
+    const formattedDate = new Intl.DateTimeFormat('vi-VN', {
+        weekday: 'long',
+        day: '2-digit',
+        month: 'long',
+        year: 'numeric',
+        timeZone: 'Asia/Ho_Chi_Minh'
+    }).format(currentTime);
+
+    // Format Time: "14:26:30"
+    const formattedTime = new Intl.DateTimeFormat('vi-VN', {
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit',
+        hour12: false,
+        timeZone: 'Asia/Ho_Chi_Minh'
+    }).format(currentTime);
+
     const currentTrack = MUSIC_PLAYLIST[currentTrackIndex];
 
     useEffect(() => {
@@ -101,11 +129,14 @@ const InvitationCard: React.FC = () => {
 
                             <div className="space-y-4 font-serif text-wedding-accent">
                                 <p className="text-lg tracking-wide uppercase">
-                                    Chủ nhật, Ngày 28 Tháng 12 Năm 2025
+                                    {formattedDate}
+                                </p>
+                                <p className="text-2xl font-bold tracking-widest text-wedding-gold mt-1">
+                                    {formattedTime}
                                 </p>
                                 <div className="h-[1px] w-24 bg-wedding-accent/20 mx-auto md:mx-0"></div>
                                 <p className="italic text-base leading-relaxed">
-                                    "Chúng tôi thương mời bạn đến chung vui và chúc phúc cho tình yêu của chúng tôi."
+
                                 </p>
                             </div>
 
