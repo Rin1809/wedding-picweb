@@ -38,7 +38,7 @@ const InvitationCard: React.FC = () => {
 
                         <div className="space-y-4 font-serif text-wedding-accent">
                             <p className="text-lg tracking-wide uppercase">
-                                Thứ Bảy, Ngày 15 Tháng 03 Năm 2025
+                                Chủ nhật, Ngày 28 Tháng 12 Năm 2025
                             </p>
                             <div className="h-[1px] w-24 bg-wedding-accent/20 mx-auto md:mx-0"></div>
                             <p className="italic text-base leading-relaxed">
