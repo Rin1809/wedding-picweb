@@ -57,7 +57,7 @@ const Gallery: React.FC = () => {
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="text-center mb-16">
           <h2 className="text-white font-serif text-4xl md:text-5xl mb-4 drop-shadow-md">
-            Khoảnh Khắc Đáng Nhớ
+            Beautiful Moment
           </h2>
           <p className="text-white/90 font-sans italic">
             "23-04-2017 - Hiện tại"
