@@ -40,6 +40,11 @@ export const NAV_LINKS = [
 
 export const MUSIC_PLAYLIST = [
   {
+    title: "Beautiful In White",
+    artist: "Shane Filan",
+    src: "/music/Shane Filan - Beautiful In White (Official Video).mp3"
+  },
+  {
     title: "Cùng Anh Già Đi",
     artist: "Đường Cổ",
     src: "/music/cung-anh-gia-di.mp3"
