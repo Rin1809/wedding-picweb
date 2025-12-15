@@ -6,8 +6,8 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const ANH_DIR = path.resolve(__dirname, '../anh');
-const BACKUP_DIR = path.resolve(__dirname, '../anh_originals');
+const ANH_DIR = path.resolve(__dirname, '../public/anh');
+const BACKUP_DIR = path.resolve(__dirname, '../public/anh_originals');
 
 if (!fs.existsSync(BACKUP_DIR)) {
     fs.mkdirSync(BACKUP_DIR);
